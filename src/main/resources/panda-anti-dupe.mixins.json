@@ -1,0 +1,25 @@
+{
+  "required": true,
+  "package": "me.sebastian420.PandaAntiDupe.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "AbstractRailBlockMixin",
+    "BeehiveBlockEntityMixin",
+    "ExampleMixin",
+    "FallingBlockEntityMixin",
+    "HopperBlockEntityMixin",
+    "HorseScreenHandlerMixin",
+    "ItemEntityAccessor",
+    "LecternBlockEntityMixin",
+    "MobEntityMixin",
+    "PistonBlockMixin",
+    "ScreenHandlerMixin",
+    "ShulkerBoxBlockMixin",
+    "SimpleInventoryMixin",
+    "TripwireBlockMixin",
+    "TripwireHookBlockMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+	}
+}
