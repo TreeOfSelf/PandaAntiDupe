@@ -29,6 +29,8 @@ public abstract class TripwireHookBlockMixin extends Block {
     /**
      * Fix the tripwire hook duplication bug. We have to do all the correct checks in all the correct locations to make
      * sure that the hooks are handled correctly
+     * @author carpet-fixes
+     * @reason carpet-fixes
      */
     @Overwrite
     public static void update(World world, BlockPos pos, BlockState state, boolean beingRemoved,
