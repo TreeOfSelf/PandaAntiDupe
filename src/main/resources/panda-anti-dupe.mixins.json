@@ -5,6 +5,7 @@
   "mixins": [
     "AbstractRailBlockMixin",
     "BeehiveBlockEntityMixin",
+    "ClientConnectionMixin",
     "FallingBlockEntityMixin",
     "HopperBlockEntityMixin",
     "HorseScreenHandlerMixin",
