@@ -5,6 +5,7 @@ import net.minecraft.block.entity.BeehiveBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.passive.BeeEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkSectionPos;
 import org.spongepowered.asm.mixin.Mixin;
@@ -25,7 +26,7 @@ public abstract class BeehiveBlockEntityMixin extends BlockEntity {
             at = @At("HEAD"),
             cancellable = true
     )
-    private void tryEnterHiveIfLoaded(Entity entity, CallbackInfo ci) {
+    private void tryEnterHiveIfLoaded(BeeEntity entity, CallbackInfo ci) {
         if (!entity.getWorld().isChunkLoaded(
                 ChunkSectionPos.getSectionCoord(this.pos.getX()),
                 ChunkSectionPos.getSectionCoord(this.pos.getY())
