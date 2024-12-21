@@ -28,8 +28,8 @@ public abstract class BeehiveBlockEntityMixin extends BlockEntity {
     )
     private void tryEnterHiveIfLoaded(BeeEntity entity, CallbackInfo ci) {
         if (!entity.getWorld().isChunkLoaded(
-                ChunkSectionPos.getSectionCoord(this.pos.getX()),
-                ChunkSectionPos.getSectionCoord(this.pos.getY())
+                ChunkSectionPos.getSectionCoord(this.getPos().getX()),
+                ChunkSectionPos.getSectionCoord(this.getPos().getZ())
         )) {
             ci.cancel();
         }
