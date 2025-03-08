@@ -16,6 +16,7 @@
     "ScreenHandlerMixin",
     "ShulkerBoxBlockMixin",
     "SimpleInventoryMixin",
+    "TridentChargeMixin",
     "TripwireBlockMixin",
     "TripwireHookBlockMixin"
   ],
