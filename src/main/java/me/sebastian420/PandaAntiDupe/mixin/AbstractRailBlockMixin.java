@@ -1,5 +1,6 @@
 package me.sebastian420.PandaAntiDupe.mixin;
 
+import me.sebastian420.PandaAntiDupe.PandaAntiDupeConfig;
 import net.minecraft.block.AbstractRailBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -27,6 +28,8 @@ public abstract class AbstractRailBlockMixin
     )
     private void checkIfRailStillExists(BlockState state, World world, BlockPos pos, Block sourceBlock, @Nullable WireOrientation wireOrientation, boolean notify, CallbackInfo ci)
     {
+        if (!PandaAntiDupeConfig.getDupeStatus("RailDupe")) return;
+
         if (!(world.getBlockState(pos).getBlock() instanceof AbstractRailBlock))
         {
             ci.cancel();

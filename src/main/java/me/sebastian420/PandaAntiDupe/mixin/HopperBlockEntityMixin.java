@@ -1,5 +1,6 @@
 package me.sebastian420.PandaAntiDupe.mixin;
 
+import me.sebastian420.PandaAntiDupe.PandaAntiDupeConfig;
 import net.minecraft.block.entity.HopperBlockEntity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.inventory.Inventory;
@@ -17,6 +18,8 @@ public class HopperBlockEntityMixin {
             cancellable = true
     )
     private static void extract(Inventory inventory, ItemEntity itemEntity, CallbackInfoReturnable<Boolean> cir) {
+        if (!PandaAntiDupeConfig.getDupeStatus("HopperDupe")) return;
+
         if (((ItemEntityAccessor) itemEntity).getPickupDelay() == 32767) {
             cir.setReturnValue(true);
         }

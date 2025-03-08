@@ -1,6 +1,7 @@
 package me.sebastian420.PandaAntiDupe.mixin;
 
 import com.llamalad7.mixinextras.sugar.Local;
+import me.sebastian420.PandaAntiDupe.PandaAntiDupeConfig;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.PistonBlock;
@@ -44,6 +45,7 @@ public abstract class PistonBlockMixin
             @Local(ordinal = 1) List<BlockState> list2  // states of list
     )
     {
+            if (!PandaAntiDupeConfig.getDupeStatus("PistonDupe")) return;
 
             for (int l = list.size() - 1; l >= 0; --l)
             {
@@ -81,8 +83,10 @@ public abstract class PistonBlockMixin
             @Local(ordinal = 0) int j
     )
     {
+        if (!PandaAntiDupeConfig.getDupeStatus("PistonDupe")) return;
 
-            int j2 = list3.size();
+
+        int j2 = list3.size();
             for (int l2 = list.size() - 1; l2 >= 0; --l2)
             {
                 blockStates[j2++] = list2.get(l2);

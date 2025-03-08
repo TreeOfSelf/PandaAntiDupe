@@ -1,5 +1,6 @@
 package me.sebastian420.PandaAntiDupe.mixin;
 
+import me.sebastian420.PandaAntiDupe.PandaAntiDupeConfig;
 import net.minecraft.block.TripwireBlock;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -18,6 +19,9 @@ public class TripwireBlockMixin {
             index = 5
     )
     private int alwaysNegativeOne(int i) {
+        if (!PandaAntiDupeConfig.getDupeStatus("TripwireDupe")) return i;
+
+
         return -1;
     }
 }

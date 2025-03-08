@@ -1,6 +1,7 @@
 package me.sebastian420.PandaAntiDupe.mixin;
 
 import io.netty.channel.ChannelHandlerContext;
+import me.sebastian420.PandaAntiDupe.PandaAntiDupeConfig;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.network.ClientConnection;
@@ -24,6 +25,8 @@ public class ClientConnectionMixin {
 
     @Inject(method = "channelRead0(Lio/netty/channel/ChannelHandlerContext;Lnet/minecraft/network/packet/Packet;)V", at = @At("HEAD"), cancellable = true)
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, Packet<?> packet, CallbackInfo ci) {
+        if (!PandaAntiDupeConfig.getDupeStatus("BookDupe")) return;
+
         if (packetListener instanceof ServerPlayNetworkHandler) {
             ServerPlayerEntity serverPlayerEntity = ((ServerPlayNetworkHandler) packetListener).getPlayer();
             if (packet instanceof BookUpdateC2SPacket bookPacket) {

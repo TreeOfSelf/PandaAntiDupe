@@ -1,5 +1,6 @@
 package me.sebastian420.PandaAntiDupe.mixin;
 
+import me.sebastian420.PandaAntiDupe.PandaAntiDupeConfig;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.FallingBlockEntity;
@@ -28,6 +29,8 @@ public abstract class FallingBlockEntityMixin extends Entity
     )
     private void afterMove(CallbackInfo ci)
     {
+        if (!PandaAntiDupeConfig.getDupeStatus("GravityBlockDupe")) return;
+
         if (this.isRemoved()) ci.cancel();
     }
 }

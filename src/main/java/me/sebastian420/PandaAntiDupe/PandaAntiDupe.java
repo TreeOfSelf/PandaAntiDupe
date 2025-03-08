@@ -11,5 +11,6 @@ public class PandaAntiDupe implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		LOGGER.info("PandaAntiDupe Started!");
+		PandaAntiDupeConfig.loadDupeConfig();
 	}
 }

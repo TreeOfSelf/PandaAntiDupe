@@ -1,5 +1,6 @@
 package me.sebastian420.PandaAntiDupe.mixin;
 
+import me.sebastian420.PandaAntiDupe.PandaAntiDupeConfig;
 import net.minecraft.entity.passive.AbstractHorseEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -24,6 +25,8 @@ public class HorseScreenHandlerMixin {
             cancellable = true
     )
     private void onlyTransferIfEntityAlive(PlayerEntity p, int i, CallbackInfoReturnable<ItemStack> cir) {
+        if (!PandaAntiDupeConfig.getDupeStatus("HorseQuickMoveDupe")) return;
+
         if ((p.isDead() || p.isRemoved() || entity.isDead() || entity.isRemoved()))
             cir.setReturnValue(ItemStack.EMPTY);
     }

@@ -1,5 +1,6 @@
 package me.sebastian420.PandaAntiDupe.mixin;
 
+import me.sebastian420.PandaAntiDupe.PandaAntiDupeConfig;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 import org.spongepowered.asm.mixin.Mixin;
@@ -26,6 +27,8 @@ public class ScreenHandlerMixin {
             index = 0
     )
     private ItemStack modifyStack(ItemStack stack) {
+        if (!PandaAntiDupeConfig.getDupeStatus("StackSplitDupe")) return stack;
+
         return stack.split(stack.getCount());
     }
 }

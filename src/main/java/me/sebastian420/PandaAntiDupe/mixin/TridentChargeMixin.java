@@ -1,6 +1,7 @@
 package me.sebastian420.PandaAntiDupe.mixin;
 
 import io.netty.channel.ChannelHandlerContext;
+import me.sebastian420.PandaAntiDupe.PandaAntiDupeConfig;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.network.listener.PacketListener;
 import net.minecraft.network.packet.Packet;
@@ -20,6 +21,8 @@ public class TridentChargeMixin {
 
     @Inject(method = "channelRead0(Lio/netty/channel/ChannelHandlerContext;Lnet/minecraft/network/packet/Packet;)V", at = @At("HEAD"), cancellable = true)
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, Packet<?> packet, CallbackInfo ci) {
+        if (!PandaAntiDupeConfig.getDupeStatus("TridentDupe")) return;
+
         if (packetListener instanceof ServerPlayNetworkHandler) {
 
             ServerPlayerEntity serverPlayerEntity = ((ServerPlayNetworkHandler) packetListener).getPlayer();

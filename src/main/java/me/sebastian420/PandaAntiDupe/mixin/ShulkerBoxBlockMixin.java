@@ -1,5 +1,6 @@
 package me.sebastian420.PandaAntiDupe.mixin;
 
+import me.sebastian420.PandaAntiDupe.PandaAntiDupeConfig;
 import net.minecraft.block.ShulkerBoxBlock;
 import net.minecraft.block.entity.ShulkerBoxBlockEntity;
 import org.spongepowered.asm.mixin.Mixin;
@@ -18,6 +19,8 @@ public class ShulkerBoxBlockMixin {
     )
     private static void clearAfterGetDroppedStack(ShulkerBoxBlockEntity shulkerBoxBlockEntity,
                                                      Consumer lootConsumer, CallbackInfo ci) {
+        if (!PandaAntiDupeConfig.getDupeStatus("ShulkerBoxDupe")) return;
+
         shulkerBoxBlockEntity.clear();
     }
 }

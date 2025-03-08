@@ -1,6 +1,7 @@
 package me.sebastian420.PandaAntiDupe.mixin;
 
 import com.google.common.base.MoreObjects;
+import me.sebastian420.PandaAntiDupe.PandaAntiDupeConfig;
 import net.minecraft.block.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -35,6 +36,8 @@ public abstract class TripwireHookBlockMixin extends Block {
     @Overwrite
     public static void update(World world, BlockPos pos, BlockState state, boolean beingRemoved,
                               boolean bl, int i, @Nullable BlockState blockState) {
+        if (!PandaAntiDupeConfig.getDupeStatus("TripwireHookDupe")) return;
+
         Direction direction = state.get(FACING);
         boolean attached = state.get(ATTACHED);
         boolean powered = state.get(POWERED);

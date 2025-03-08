@@ -1,5 +1,6 @@
 package me.sebastian420.PandaAntiDupe.mixin;
 
+import me.sebastian420.PandaAntiDupe.PandaAntiDupeConfig;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LecternBlock;
@@ -31,6 +32,8 @@ public class LecternBlockEntityMixin extends BlockEntity {
             cancellable = true
     )
     private void onBookRemovedCheckIfBlockStillThere(CallbackInfo ci) {
+        if (!PandaAntiDupeConfig.getDupeStatus("LecternDupe")) return;
+
         if (!this.isRemoved()) { // If the lectern block entity is removed, no world interactions should be done
             BlockState state = this.getWorld().getBlockState(this.getPos());
             if (state.isOf(Blocks.LECTERN)) {

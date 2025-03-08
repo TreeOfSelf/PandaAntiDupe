@@ -1,5 +1,6 @@
 package me.sebastian420.PandaAntiDupe.mixin;
 
+import me.sebastian420.PandaAntiDupe.PandaAntiDupeConfig;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtList;
@@ -20,6 +21,8 @@ public class SimpleInventoryMixin {
 
     @Inject(method= "readNbtList",at=@At("HEAD"))
     public void readNbtListWithoutDupe(NbtList list, RegistryWrapper.WrapperLookup registries, CallbackInfo ci) {
+        if (!PandaAntiDupeConfig.getDupeStatus("NBTListDupe")) return;
+
         for(int j = 0; j < this.size(); ++j) {
             this.setStack(j, ItemStack.EMPTY);
         }

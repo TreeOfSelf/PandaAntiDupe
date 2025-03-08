@@ -1,5 +1,6 @@
 package me.sebastian420.PandaAntiDupe.mixin;
 
+import me.sebastian420.PandaAntiDupe.PandaAntiDupeConfig;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BeehiveBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
@@ -27,6 +28,8 @@ public abstract class BeehiveBlockEntityMixin extends BlockEntity {
             cancellable = true
     )
     private void tryEnterHiveIfLoaded(BeeEntity entity, CallbackInfo ci) {
+        if (!PandaAntiDupeConfig.getDupeStatus("BeeDupe")) return;
+
         if (!entity.getWorld().isChunkLoaded(
                 ChunkSectionPos.getSectionCoord(this.getPos().getX()),
                 ChunkSectionPos.getSectionCoord(this.getPos().getZ())
