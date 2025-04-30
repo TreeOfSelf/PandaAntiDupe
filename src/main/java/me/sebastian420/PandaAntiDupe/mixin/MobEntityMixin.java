@@ -2,6 +2,7 @@ package me.sebastian420.PandaAntiDupe.mixin;
 
 import me.sebastian420.PandaAntiDupe.PandaAntiDupeConfig;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.world.World;
@@ -19,7 +20,7 @@ abstract class MobEntityMixin extends LivingEntity {
     @Inject(method="removeFromDimension",at=@At("RETURN"))
     protected void stopGeneralItemDupes(CallbackInfo ci) {
         if (!PandaAntiDupeConfig.getDupeStatus("EntityDimensionDupe")) return;
-
-        this.getEquippedItems().forEach(lvt0 -> lvt0.setCount(0));
+        for (EquipmentSlot slot : EquipmentSlot.values())
+            this.getEquippedStack(slot).setCount(0);
     }
 }
