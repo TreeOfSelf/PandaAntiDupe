@@ -1,7 +1,7 @@
-package me.sebastian420.PandaAntiDupe.mixin;
+package me.TreeOfSelf.PandaAntiDupe.mixin;
 
 import com.llamalad7.mixinextras.sugar.Local;
-import me.sebastian420.PandaAntiDupe.PandaAntiDupeConfig;
+import me.TreeOfSelf.PandaAntiDupe.PandaAntiDupeConfig;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.PistonBlock;

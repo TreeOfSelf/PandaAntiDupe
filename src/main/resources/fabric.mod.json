@@ -16,7 +16,7 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"me.sebastian420.PandaAntiDupe.PandaAntiDupe"
+          "me.TreeOfSelf.PandaAntiDupe.PandaAntiDupe"
 		]
 	},
 	"mixins": [

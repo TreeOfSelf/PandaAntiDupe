@@ -1,6 +1,6 @@
-package me.sebastian420.PandaAntiDupe.mixin;
+package me.TreeOfSelf.PandaAntiDupe.mixin;
 
-import me.sebastian420.PandaAntiDupe.PandaAntiDupeConfig;
+import me.TreeOfSelf.PandaAntiDupe.PandaAntiDupeConfig;
 import net.minecraft.entity.passive.AbstractHorseEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;

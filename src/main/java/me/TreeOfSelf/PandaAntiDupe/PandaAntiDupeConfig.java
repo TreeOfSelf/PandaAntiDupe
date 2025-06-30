@@ -1,4 +1,4 @@
-package me.sebastian420.PandaAntiDupe;
+package me.TreeOfSelf.PandaAntiDupe;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

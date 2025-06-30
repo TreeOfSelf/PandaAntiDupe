@@ -1,7 +1,7 @@
-package me.sebastian420.PandaAntiDupe.mixin;
+package me.TreeOfSelf.PandaAntiDupe.mixin;
 
 import io.netty.channel.ChannelHandlerContext;
-import me.sebastian420.PandaAntiDupe.PandaAntiDupeConfig;
+import me.TreeOfSelf.PandaAntiDupe.PandaAntiDupeConfig;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.network.ClientConnection;

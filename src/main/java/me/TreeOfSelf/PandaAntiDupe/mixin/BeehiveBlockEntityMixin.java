@@ -1,11 +1,10 @@
-package me.sebastian420.PandaAntiDupe.mixin;
+package me.TreeOfSelf.PandaAntiDupe.mixin;
 
-import me.sebastian420.PandaAntiDupe.PandaAntiDupeConfig;
+import me.TreeOfSelf.PandaAntiDupe.PandaAntiDupeConfig;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BeehiveBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.BeeEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkSectionPos;

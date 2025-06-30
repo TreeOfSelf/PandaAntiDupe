@@ -1,10 +1,11 @@
-package me.sebastian420.PandaAntiDupe.mixin;
+package me.TreeOfSelf.PandaAntiDupe.mixin;
 
-import me.sebastian420.PandaAntiDupe.PandaAntiDupeConfig;
+import me.TreeOfSelf.PandaAntiDupe.PandaAntiDupeConfig;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.storage.ReadView;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -19,10 +20,9 @@ public class SimpleInventoryMixin {
         return 0;
     }
 
-    @Inject(method= "readNbtList",at=@At("HEAD"))
-    public void readNbtListWithoutDupe(NbtList list, RegistryWrapper.WrapperLookup registries, CallbackInfo ci) {
+    @Inject(method= "readDataList",at=@At("HEAD"))
+    public void readNbtListWithoutDupe(ReadView.TypedListReadView<ItemStack> list, CallbackInfo ci) {
         if (!PandaAntiDupeConfig.getDupeStatus("NBTListDupe")) return;
-
         for(int j = 0; j < this.size(); ++j) {
             this.setStack(j, ItemStack.EMPTY);
         }

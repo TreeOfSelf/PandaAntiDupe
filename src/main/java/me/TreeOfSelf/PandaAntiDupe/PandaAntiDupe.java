@@ -1,4 +1,4 @@
-package me.sebastian420.PandaAntiDupe;
+package me.TreeOfSelf.PandaAntiDupe;
 
 import net.fabricmc.api.ModInitializer;
 
