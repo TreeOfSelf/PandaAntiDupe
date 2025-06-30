@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/7c301a28-2829-4d53-b7e0-b8cd1c836579)
+
 # PandaAntiDupe
 
 ## Description
@@ -17,7 +19,7 @@ config/PandaAntiDupe.json generated at runtime, a true/false entry for each dupe
   "HorseQuickMoveDupe": true,
   "StackSplitDupe": true,
   "HopperDupe": true,
-  "PistonDupe": true,
+  "PistonDupe": true,  //this is the TNTDuping one
   "EntityDimensionDupe": true,
   "TridentDupe": true,
   "BeeDupe": true,
