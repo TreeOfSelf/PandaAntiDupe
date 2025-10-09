@@ -29,7 +29,7 @@ public abstract class BeehiveBlockEntityMixin extends BlockEntity {
     private void tryEnterHiveIfLoaded(BeeEntity entity, CallbackInfo ci) {
         if (!PandaAntiDupeConfig.getDupeStatus("BeeDupe")) return;
 
-        if (!entity.getWorld().isChunkLoaded(
+        if (!entity.getEntityWorld().isChunkLoaded(
                 ChunkSectionPos.getSectionCoord(this.getPos().getX()),
                 ChunkSectionPos.getSectionCoord(this.getPos().getZ())
         )) {

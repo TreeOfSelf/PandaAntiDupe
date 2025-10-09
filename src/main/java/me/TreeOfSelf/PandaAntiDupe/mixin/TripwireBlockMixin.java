@@ -20,8 +20,6 @@ public class TripwireBlockMixin {
     )
     private int alwaysNegativeOne(int i) {
         if (!PandaAntiDupeConfig.getDupeStatus("TripwireDupe")) return i;
-
-
         return -1;
     }
 }

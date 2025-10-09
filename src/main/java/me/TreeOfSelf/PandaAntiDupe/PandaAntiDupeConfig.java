@@ -61,7 +61,7 @@ public class PandaAntiDupeConfig {
 
     private static void createDefaultConfig() {
         JsonObject json = new JsonObject();
-        DUPE_TYPES.forEach((dupeType, defaultValue) -> json.addProperty(dupeType, defaultValue));
+        DUPE_TYPES.forEach(json::addProperty);
         saveDupeConfigToFile(json);
     }
 
