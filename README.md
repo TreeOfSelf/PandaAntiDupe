@@ -32,6 +32,10 @@ config/PandaAntiDupe.json generated at runtime, a true/false entry for each dupe
 ```
 Simply set to false to disable
 
+## Try it out
+`hardcoreanarchy.gay`   (Deathban Anarchy)  
+`sky.hardcoreanarchy.gay`   (Skyblock Anarchy)
+
 ## Support
 
 [Support discord here!]( https://discord.gg/3tP3Tqu983)
