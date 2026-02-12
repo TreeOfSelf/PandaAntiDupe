@@ -8,11 +8,12 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import static net.minecraft.block.TripwireHookBlock.*;
-
 
 @Mixin(TripwireHookBlock.class)
 public abstract class TripwireHookBlockMixin extends Block {
@@ -33,9 +34,10 @@ public abstract class TripwireHookBlockMixin extends Block {
      * @author carpet-fixes
      * @reason carpet-fixes
      */
-    @Overwrite
-    public static void update(World world, BlockPos pos, BlockState state, boolean beingRemoved,
-                              boolean bl, int i, @Nullable BlockState blockState) {
+    @Inject(method = "update", at = @At("HEAD"), cancellable = true)
+    private static void updateMixin(World world, BlockPos pos, BlockState state, boolean beingRemoved,
+                                    boolean bl, int i, @Nullable BlockState blockState, CallbackInfo ci) {
+
         if (!PandaAntiDupeConfig.getDupeStatus("TripwireHookDupe")) return;
 
         Direction direction = state.get(FACING);
@@ -47,6 +49,7 @@ public abstract class TripwireHookBlockMixin extends Block {
         int index = 0;
         BlockState[] blockStates = new BlockState[42];
         BlockPos blockPos;
+
         for(int k = 1; k < 42; ++k) {
             blockPos = pos.offset(direction, k);
             BlockState blockState2 = world.getBlockState(blockPos);
@@ -77,7 +80,7 @@ public abstract class TripwireHookBlockMixin extends Block {
         BlockState newState = block.getDefaultState().with(ATTACHED, notRemoving).with(POWERED, on);
         if (index > 0) {
             blockPos = pos.offset(direction, index);
-            Direction blockState2 = direction.getOpposite();
+            Direction blockState2 = direction.getOpposite(); // Variable reuse from original code
             world.setBlockState(blockPos, newState.with(FACING, blockState2), Block.NOTIFY_ALL);
             updateNeighborsOnAxis(block, world, blockPos, blockState2);
             playSound(world, blockPos, notRemoving, on, attached, powered);
@@ -100,5 +103,7 @@ public abstract class TripwireHookBlockMixin extends Block {
                 }
             }
         }
+
+        ci.cancel();
     }
 }
