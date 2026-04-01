@@ -1,26 +1,24 @@
 {
   "required": true,
   "package": "me.TreeOfSelf.PandaAntiDupe.mixin",
-  "compatibilityLevel": "JAVA_21",
+  "compatibilityLevel": "JAVA_25",
   "mixins": [
-    "AbstractRailBlockMixin",
+    "AbstractContainerMenuMixin",
+    "AbstractMountInventoryMenuMixin",
+    "BaseRailBlockMixin",
     "BeehiveBlockEntityMixin",
     "ClientConnectionMixin",
     "FallingBlockEntityMixin",
     "HopperBlockEntityMixin",
-    "HorseScreenHandlerMixin",
     "ItemEntityAccessor",
     "LecternBlockEntityMixin",
     "MobEntityMixin",
-    "PistonBlockMixin",
-    "ScreenHandlerMixin",
+    "PistonBaseBlockMixin",
     "ShulkerBoxBlockMixin",
-    "SimpleInventoryMixin",
-    "TridentChargeMixin",
-    "TripwireBlockMixin",
-    "TripwireHookBlockMixin"
+    "SimpleContainerMixin",
+    "TripwireBlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1
-	}
+  }
 }
