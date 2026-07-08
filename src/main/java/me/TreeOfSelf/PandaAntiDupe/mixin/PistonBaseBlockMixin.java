@@ -38,6 +38,9 @@ public abstract class PistonBaseBlockMixin {
 		for (int i = toPush.size() - 1; i >= 0; i--) {
 			BlockPos pos = toPush.get(i);
 			BlockState state = level.getBlockState(pos);
+			if (state.hasBlockEntity()) {
+				continue;
+			}
 			level.setBlock(pos, Blocks.AIR.defaultBlockState(), 2 | 4 | 16 | 64);
 			toPushShapes.set(i, state);
 			deleteAfterMove.put(pos, state);
