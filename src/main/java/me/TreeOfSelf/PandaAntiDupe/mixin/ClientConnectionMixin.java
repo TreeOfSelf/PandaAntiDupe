@@ -9,6 +9,7 @@ import net.minecraft.network.protocol.game.ServerboundContainerClickPacket;
 import net.minecraft.network.protocol.game.ServerboundEditBookPacket;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.spongepowered.asm.mixin.Mixin;
@@ -29,7 +30,13 @@ public abstract class ClientConnectionMixin {
 		}
 		ServerPlayer player = handler.player;
 		if (PandaAntiDupeConfig.getDupeStatus("BookDupe") && packet instanceof ServerboundEditBookPacket bookPacket) {
-			ItemStack bookStack = player.getInventory().getItem(bookPacket.slot());
+			// Same slots vanilla accepts; a negative slot threw on the netty thread
+			int slot = bookPacket.slot();
+			if (!Inventory.isHotbarSlot(slot) && slot != 40) {
+				ci.cancel();
+				return;
+			}
+			ItemStack bookStack = player.getInventory().getItem(slot);
 			if (bookPacket.title().isPresent() && bookPacket.title().get().length() > 32) {
 				ci.cancel();
 				return;

@@ -17,7 +17,8 @@ public abstract class HopperBlockEntityMixin {
 			return;
 		}
 		if (((ItemEntityAccessor) itemEntity).getPickupDelay() == 32767) {
-			cir.setReturnValue(true);
+			// Skip just this item: true told the hopper it moved something, so it never sucked in the items next to it
+			cir.setReturnValue(false);
 		}
 	}
 }
