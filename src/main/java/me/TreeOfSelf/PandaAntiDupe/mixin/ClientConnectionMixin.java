@@ -5,7 +5,6 @@ import me.TreeOfSelf.PandaAntiDupe.PandaAntiDupeConfig;
 import net.minecraft.network.Connection;
 import net.minecraft.network.PacketListener;
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ServerboundContainerClickPacket;
 import net.minecraft.network.protocol.game.ServerboundEditBookPacket;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import net.minecraft.server.level.ServerPlayer;
@@ -44,11 +43,6 @@ public abstract class ClientConnectionMixin {
 			if (bookStack.getItem() != Items.WRITABLE_BOOK) {
 				ci.cancel();
 				return;
-			}
-		}
-		if (PandaAntiDupeConfig.getDupeStatus("TridentDupe") && packet instanceof ServerboundContainerClickPacket) {
-			if (player.getTicksUsingItem() != 0 || player.getUseItemRemainingTicks() != 0) {
-				ci.cancel();
 			}
 		}
 	}
